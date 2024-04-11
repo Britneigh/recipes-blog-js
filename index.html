@@ -21,18 +21,24 @@
                     <div class="selected-lang">
                         <img src="Images\UK flag.png" id="English">
                     </div>
-                        <ul>
-                        <li><img src="Images\Germany flag.png" id="German"></li>
-                        </ul>
+                <ul>
+                <li><img src="Images\Germany flag.png" id="German"></li>
+                </ul>
                 </div> <!--Language list ends--></li>
             </ul>
         </nav>
     </header>
     <hr>
 <div class="search-container">
-    <input type="search" class="search-field" placeholder="Food search">
-    <button id="searchbtn">Search</button>
+    <input type="search" id="search-field" placeholder="Search for a recipe">
+    <div class="search-boxes" meals-data-container>
+    </div>
+    <template meals-data-template>
+        <div class="box">
+        </div>
+    </template>
 </div>
+    <!-- <div class="meals" id="meals"></div> -->
     <img id="background" src="Images\German-food.jpg" alt="background image">
     <p id="main-text"> In today's blog, I'll be sharing with everyone the different types of popular
         German dishes that can easily be made at home in YOUR kitchen! These meals are quick, simple and delicious! It's perfect for reminiscing that time when you

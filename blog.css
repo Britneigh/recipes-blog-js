@@ -24,32 +24,38 @@ header {
 
 .search-container {
     display: flex;
+    flex-direction: column;
     max-width: 50%;
     margin: 0 auto;
     margin-bottom: 3%;
 }
 
 .search-field {
-    height: 30px;
     border-color: rgb(172, 172, 172);
     border-radius: 3px;
 }
 
-#searchbtn {
-    width: 60px;
-    height: auto;
-    border-radius: 3px;
-    border: 0;
-    cursor: pointer;
-    background-color: rgb(102, 102, 102);
-    color: white;
-    padding: 0 2%;
-    transition: 0.5s;
-    box-shadow: 0 0 5px rgb(129, 129, 129);
+.search-boxes {
+    display: grid;
+    grid-template-columns: repeat(minmax(150px, 1fr));
+    margin-top: 1rem;
 }
 
-#searchbtn:hover {
-    background-color: rgb(0, 0, 0);
+.box {
+    border: 1px solid rgb(192, 192, 192);
+    background-color: white;
+    padding: .5rem;
+    font-size: .8rem;
+}
+
+.box:hover {
+    font-weight: bold;
+    background-color: rgb(255, 250, 241);
+    cursor: default;
+}
+
+.hide {
+    display: none;
 }
 
 body {

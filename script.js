@@ -1,4 +1,35 @@
 "use strict"
+const searchField = document.getElementById("search-field");
+const mealsDataTemplate = document.querySelector("[meals-data-template]");
+const mealsDataContainer = document.querySelector("[meals-data-container]");
+let recipes = [];
+
+async function searchRecipes(term) {
+    const resp = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=" + term);
+
+    const data = await resp.json();
+    const meals = data.meals;
+
+    console.log(meals);
+    mealsDataContainer.innerHTML = '';
+    meals.map(recipe => {
+    const box = mealsDataTemplate.content.cloneNode(true).children[0];
+        box.textContent = recipe.strMeal;
+        mealsDataContainer.appendChild(box);
+        return {name: recipe.strMeal, element: box};
+    })
+}
+
+searchField.addEventListener("input", async () => { //each letter input is registered for filtering
+    const term = searchField.value.toLowerCase();
+    console.log(term);
+    if (term.length > 0) {
+        await searchRecipes(term);
+    }else{
+        mealsDataContainer.innerHTML = ''; //clears suggestions that don't match the input
+    }
+}); 
+
 //Translation list
 //Selecting the HTML elements
 document.querySelector("#German");
