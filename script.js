@@ -2,6 +2,7 @@
 const searchField = document.getElementById("search-field");
 const mealsDataTemplate = document.querySelector("[meals-data-template]");
 const mealsDataContainer = document.querySelector("[meals-data-container]");
+
 let recipes = [];
 
 async function searchRecipes(term) {
@@ -92,12 +93,64 @@ const m3s2 = document.querySelector("#m3s2");
 const m3s3 = document.querySelector("#m3s3");
 const m3s4 = document.querySelector("#m3s4");
 //Newsletter
+const form = document.getElementById("form");
 const sub = document.querySelector("#sub");
 const subText = document.querySelector("#sub-text");
 const yourEmail = document.querySelector("#email");
 const subBtn = document.querySelector("#sub-btn");
 const TnC = document.querySelector("#TnC");
+let emailErrorMsg = document.getElementById("email-error-msg");
+const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+let isValid = true;
+let emailBoxTouched = false;
 
+const emailValidation = (event) => {
+    emailBoxTouched = true;
+    if (!emailRegex.test(yourEmail.value)) {
+      event.preventDefault();
+      emailErrorMsg.textContent = "Invalid email.";
+      isValid = false;
+    } else {
+      emailErrorMsg.textContent = "";
+      isValid = true;
+    }
+  };
+
+const formCheck = (event) => {
+    if (!isValid){
+        event.preventDefault();
+    } else {
+        event.preventDefault();
+        showPopup();
+        //alert("You have successfully subscribed! 🎉");
+        form.reset();
+        emailBoxTouched = false;
+    }
+}
+yourEmail.addEventListener("blur", emailValidation);
+yourEmail.addEventListener("input", (event) => {
+    if (!emailBoxTouched) {
+        emailBoxTouched = true;
+    }
+    emailValidation(event);
+    if (yourEmail.value === "") {
+        emailErrorMsg.textContent = "";
+    }
+});
+
+form.addEventListener("submit", formCheck);
+
+//Pop-up message
+const popup = document.getElementById("pop-up");
+const closePopup = document.getElementById("close-pop-up");
+
+function showPopup() {
+    popup.classList.remove("hidden");
+}
+
+closePopup.addEventListener("click", () => {
+    popup.classList.add("hidden");
+});
 
 //Clicking the German flag will switch the website to German
 document.querySelector("#German").onclick = function (){

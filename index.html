@@ -158,13 +158,20 @@
         <div class="newsletter">
             <h1 id="sub">Subscribe for more delicious recipes!</h1>
             <p id="sub-text"><i>Receive updates through your inbox everytime I upload new recipes!</i></p>
-            <form>
+            <form id="form">
                 <input type="email" placeholder="Your Email" id="email" required>
                 <button type="submit" id="sub-btn">Subscribe</button>
+                <p id="email-error-msg"></p>
                 <br>
                 <input type="checkbox" id="subscribeConfirmation" required>
                 <label for="subscribeConfirmation" id="TnC">I agree to receive email updates and promotions. (You can unsubscribe at anytime.)</label>
             </form>
+            <div id="pop-up" class="pop-up hidden">
+                <div class="pop-up-content">
+                  <p>You have successfully subscribed! 🎉</p>
+                  <button id="close-pop-up">Close</button>
+                </div>
+              </div>
         </div>
     </footer>   
 </body>
