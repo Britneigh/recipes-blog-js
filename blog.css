@@ -28,17 +28,20 @@ header {
     max-width: 50%;
     margin: 0 auto;
     margin-bottom: 3%;
+    position: relative;
 }
 
-.search-field {
+#search-field {
     border-color: rgb(172, 172, 172);
-    border-radius: 3px;
+    width: 100%;
 }
 
 .search-boxes {
     display: grid;
-    grid-template-columns: repeat(minmax(150px, 1fr));
-    margin-top: 1rem;
+    grid-template-columns: repeat(autofill, minmax(150px, 1fr));
+    width: 100%;
+    margin-top: 1.3rem;
+    position: absolute;
 }
 
 .box {

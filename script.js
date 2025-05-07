@@ -10,7 +10,6 @@ async function searchRecipes(term) {
     const data = await resp.json();
     const meals = data.meals;
 
-    console.log(meals);
     mealsDataContainer.innerHTML = '';
     meals.map(recipe => {
     const box = mealsDataTemplate.content.cloneNode(true).children[0];
@@ -20,13 +19,12 @@ async function searchRecipes(term) {
     })
 }
 
-searchField.addEventListener("input", async () => { //each letter input is registered for filtering
+searchField.addEventListener("input", async () => {
     const term = searchField.value.toLowerCase();
-    console.log(term);
     if (term.length > 0) {
         await searchRecipes(term);
     }else{
-        mealsDataContainer.innerHTML = ''; //clears suggestions that don't match the input
+        mealsDataContainer.innerHTML = '';
     }
 }); 
 
